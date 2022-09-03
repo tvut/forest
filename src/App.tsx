@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -12,11 +12,23 @@ import Trees from './views/trees';
 
 function App() {
 
+  const [user, setUser] = useState("");
+
+  function RequireUser({ children }: { children: JSX.Element }) {
+    let location = useLocation();
+    if (user === "") {
+      // Redirect to the /login page
+      return <Navigate to="/" state={{ from: location }} replace />;
+    }
+    return children;
+  }
+
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<Auth/>}/>
-        <Route path='/trees' element={<Trees/>}/>
+        <Route path='/' element={<Auth setUser={setUser} />}/>
+        <Route path='/trees' element={<RequireUser><Trees user={user} /></RequireUser>}/>
+      
       </Routes>
     </Router>
   );

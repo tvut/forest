@@ -2,7 +2,11 @@ import { useMutation, useQuery } from "../convex/_generated/react";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
 
-function Auth() {
+interface authProps{
+  setUser: (user: string)=>void
+}
+
+function Auth({ setUser }: authProps){
 
     // const existingTrees = useQuery("listTrees") || [];
     const [username, setUsername] = useState("");
@@ -20,6 +24,7 @@ function Auth() {
         } else {
             console.log("success")
             await add(username, 100, [])
+            setUser(username)
             navigate('/trees')
         }
     };
