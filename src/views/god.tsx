@@ -2,29 +2,62 @@ import { useMutation, useQuery } from "../convex/_generated/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function God() {
-  const [deadTrees, setDeadTrees] = useState(5);
-  const [totalTrees, setTotalTrees] = useState(10);
-  const [averageHealth, setAverageHealth] = useState(0.9);
+interface godProps {
+  gameID: string;
+}
+
+function God({ gameID }: godProps) {
+  const game = useQuery("getGame", gameID);
+
+  const totalTrees = game?.trees.size || 0;
+  const deadTrees =
+    (game &&
+      Array.from(game.trees.values()).filter((t) => t.health <= 0).length) ||
+    0;
+  const averageHealth =
+    (game &&
+      Array.from(game.trees.values()).reduce(
+        (acc, val) => acc + val.health,
+        0
+      ) / game?.trees.size) ||
+    0;
+
+  const removeAll = useMutation("removeHealth");
+  const singleTreeAdd = useMutation("singleTreeHealth");
 
   const lightning = () => {
     console.log("lightning");
+    if (game?.trees) {
+      let keys = Array.from(game?.trees.keys());
+      let toRemove = keys[Math.floor(Math.random() * keys.length)];
+      singleTreeAdd(gameID, toRemove, -100);
+      console.log("fully killed " + toRemove);
+    }
+    let mult = deadTrees / (totalTrees - deadTrees) || 0
+    console.log(mult)
+    if(Math.min() * mult > 0.95){
+        forestfire()
+    }
   };
 
   const forestfire = () => {
     console.log("forestfire");
+    removeAll(gameID, 10 + Math.round((deadTrees / totalTrees) * 10));
   };
 
   const flood = () => {
     console.log("flood");
+    removeAll(gameID, 5 + Math.round((deadTrees / totalTrees) * 5));
   };
 
   const drought = () => {
     console.log("drought");
+    removeAll(gameID, 5);
   };
 
   const bugs = () => {
     console.log("bugs");
+    removeAll(gameID, Math.round(3 + 10 * Math.random()));
   };
 
   return (

@@ -32,7 +32,7 @@ function App() {
         <Route path='/' element={<Auth setUser={setUser} setGameID={setGameID}/>}/>
         <Route path='/trees' element={<RequireUser><Trees gameCode={gameID} user={user} /></RequireUser>}/>
         <Route path='/setup' element={<Setup setGameID={setGameID}/>} />
-        <Route path='/god' element={<God/>}/>
+        <Route path='/god' element={<God gameID={gameID}/>}/>
       </Routes>
     </Router>
   );
