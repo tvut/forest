@@ -1,9 +1,8 @@
 import { defineSchema, defineTable, s } from "convex/schema";
 
 export default defineSchema({
-  trees: defineTable({
+  games: defineTable({
     id: s.string(),
-    health: s.number(),
-    neighbors: s.array(s.string()),
+    trees: s.map(s.string(), s.object({health: s.number(), neighbors: s.array(s.string())}))
   }),
 });
