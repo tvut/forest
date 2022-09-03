@@ -1,10 +1,12 @@
 # To set up convex
 Init local project
-`npx convex init`
+```npx convex init```
+
 Run file generation
-`npx convex codegen`
+```npx convex codegen```
+
 Start dev server
-`npx convex dev`
+```npx convex dev```
 
 # Game play
 
