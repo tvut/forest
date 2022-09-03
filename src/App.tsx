@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
   Link,
+  useParams,
   Navigate,
   useLocation,
 } from "react-router-dom";
@@ -29,10 +30,11 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<Auth setUser={setUser} setGameID={setGameID}/>}/>
+        <Route path='/' element={<Auth userOnly={false} setUser={setUser} setGameID={setGameID}/>}/>
         <Route path='/trees' element={<RequireUser><Trees gameCode={gameID} user={user} /></RequireUser>}/>
         <Route path='/setup' element={<Setup setGameID={setGameID}/>} />
         <Route path='/god' element={<God gameID={gameID}/>}/>
+        <Route path='/known/:urlID' element={<Auth userOnly={true} setUser={setUser} setGameID={setGameID}/>}/>
       </Routes>
     </Router>
   );
