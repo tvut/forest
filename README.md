@@ -1,3 +1,15 @@
+# To set up convex
+Init local project
+```npx convex init```
+
+Run file generation
+```npx convex codegen```
+
+Start dev server
+```npx convex dev```
+
+# Game play
+
 different games
 - tied to a unique game ID
 - sign into the unique game ID
