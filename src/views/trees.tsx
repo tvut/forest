@@ -30,7 +30,7 @@ function Trees({ user, gameCode }: TreeProps) {
   }
 
   return (
-    <div className='w-screen h-screen flex flex-col justify-end pt-6'>
+    <div className='w-screen h-full flex flex-col justify-end pt-6'>
       <div className='text-white absolute top-2 left-2'>Game: {gameCode}</div>
       <div className='text-white absolute top-7 left-2'>User: {user}</div>
       <div className='text-white absolute top-12 left-2'>Friends: {tree?.neighbors.length}</div>
