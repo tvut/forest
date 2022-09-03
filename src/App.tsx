@@ -1,24 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Tree from './components/tree';
+import { useMutation, useQuery } from "./convex/_generated/react";
 
 function App() {
+
+  const addTree = useMutation("addTree");
+  const trees = useQuery("listTrees") || [];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='w-screen h-screen flex flex-col justify-end'>
+      <div className='w-screen flex justify-center'>
+        <Tree height={40}/>
+      </div>
     </div>
   );
 }

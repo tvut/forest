@@ -1,0 +1,13 @@
+  .path{
+    stroke-dasharray:850 ;
+    stroke-dashoffset: 0;
+    animation: dash 4s linear;
+    stroke: silver;
+    fill:none;
+    fill-rule:evenodd;
+    stroke-width:4;
+  }
+  @keyframes dash{
+    from{ stroke-dashoffset: 850;}
+    to{ stroke-dashoffset: 0;}
+  }
