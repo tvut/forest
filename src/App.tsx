@@ -8,11 +8,13 @@ import {
   useLocation,
 } from "react-router-dom";
 import Auth from './views/auth';
+import Setup from './views/setup';
 import Trees from './views/trees';
 
 function App() {
 
   const [user, setUser] = useState("");
+  const [gameID, setGameID] = useState("");
 
   function RequireUser({ children }: { children: JSX.Element }) {
     let location = useLocation();
@@ -26,9 +28,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<Auth setUser={setUser} />}/>
-        <Route path='/trees' element={<RequireUser><Trees user={user} /></RequireUser>}/>
-      
+        <Route path='/' element={<Auth setUser={setUser} setGameID={setGameID}/>}/>
+        <Route path='/trees' element={<RequireUser><Trees gameCode={gameID} user={user} /></RequireUser>}/>
+        <Route path='/setup' element={<Setup setGameID={setGameID}/>} />
       </Routes>
     </Router>
   );
