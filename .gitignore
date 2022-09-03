@@ -21,3 +21,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+#ignore convex
+/src/convex.json
+/src/convex/_generated/*
