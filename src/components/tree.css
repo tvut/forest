@@ -7,6 +7,10 @@
     fill-rule:evenodd;
     stroke-width:4;
   }
+
+  .path-red {
+    stroke: red !important
+  }
   @keyframes dash{
     from{ stroke-dashoffset: 850;}
     to{ stroke-dashoffset: 0;}
