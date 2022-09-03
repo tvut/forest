@@ -1,7 +1,7 @@
 import './tree.css'
 
 export interface UserProps {
-    height: number
+    height?: number
   }
 
 export const Tree = ({height}: UserProps) => {

@@ -17,3 +17,11 @@ html{
   75% { transform: translateX(5px) }
   100% { transform: translateX(0) }
  }
+
+.box {
+  @apply bg-gray-800 rounded-lg text-white rounded-lg;
+}
+
+.box input {
+  @apply border-solid border-2 border-gray-600;
+}
