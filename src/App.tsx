@@ -1,18 +1,24 @@
 import React from 'react';
-import Tree from './components/tree';
-import { useMutation, useQuery } from "./convex/_generated/react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
+import Auth from './views/auth';
+import Trees from './views/trees';
 
 function App() {
 
-  const addTree = useMutation("addTree");
-  const trees = useQuery("listTrees") || [];
-
   return (
-    <div className='w-screen h-screen flex flex-col justify-end'>
-      <div className='w-screen flex justify-center'>
-        <Tree height={40}/>
-      </div>
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Auth/>}/>
+        <Route path='/trees' element={<Trees/>}/>
+      </Routes>
+    </Router>
   );
 }
 

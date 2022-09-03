@@ -10,6 +10,7 @@
  */
 
 import type addTree from "../addTree";
+import type getTree from "../getTree";
 import type listTrees from "../listTrees";
 import type { OptimisticLocalStore as GenericOptimisticLocalStore } from "convex/browser";
 import type { ClientMutation, ClientQuery } from "convex/server";
@@ -25,6 +26,7 @@ import type { ClientMutation, ClientQuery } from "convex/server";
  */
 export type ConvexAPI = {
   queries: {
+    getTree: ClientQuery<typeof getTree>;
     listTrees: ClientQuery<typeof listTrees>;
   };
   mutations: {
