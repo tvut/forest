@@ -35,7 +35,7 @@ function Trees({ user, gameCode }: TreeProps) {
         {/* <Tree height={20}/> */}
       </div>
       <div className='w-screen flex justify-center'>
-        <Tree height={40}/>
+        <Tree health={tree?.health} height={40}/>
       </div>
     </div>
   );
