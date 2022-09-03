@@ -15,8 +15,10 @@ function Trees({ user, gameCode }: TreeProps) {
 
   const [friend, setFriend] = useState("")
 
+  const add = useMutation("addFriend");
   const addFriend = () => {
-    console.log(friend)
+    add(gameCode, user, friend);
+
   }
 
   return (

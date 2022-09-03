@@ -11,8 +11,6 @@ export default query(
       .table("games")
       .filter((q) => q.eq(q.field("id"), gameCode))
       .first();
-      console.log(gameCode)
-      console.log(username)
     if (t == null) {
       return undefined;
     } else {
