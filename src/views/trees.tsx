@@ -9,7 +9,7 @@ interface TreeProps {
 
 function Trees({ user, gameCode }: TreeProps) {
 
-  // const trees = useQuery("listTrees") || [];
+  const trees = useQuery("listTrees", gameCode);
 
   const tree = useQuery("getTree", gameCode, user);
 
@@ -22,7 +22,7 @@ function Trees({ user, gameCode }: TreeProps) {
   }
 
   return (
-    <div className='w-screen h-screen flex flex-col justify-end'>
+    <div className='w-screen h-screen flex flex-col justify-end pt-6'>
       <div className='text-white absolute top-2 left-2'>Game: {gameCode}</div>
       <div className='text-white absolute top-7 left-2'>User: {user}</div>
       <div className='text-white absolute top-12 left-2'>Friends: {tree?.neighbors.length}</div>
@@ -31,8 +31,12 @@ function Trees({ user, gameCode }: TreeProps) {
         <input className='w-32 p-2 box' value={friend} onChange={(e) => setFriend(e.target.value)}></input>
         <button className='p-2 px-3 box' onClick={addFriend}>Add</button>
       </div>
-      <div className='flex-grow flex'>
-        {/* <Tree height={20}/> */}
+      <div className='flex-grow flex-col'>
+        <div className='p-8 flex flex-wrap w-screen flex items-center justify-center'>
+        {tree?.neighbors.map((s) => {
+          return <Tree key={s} health={trees?.get(s)?.health} height={20}/>
+        })}
+        </div>
       </div>
       <div className='w-screen flex justify-center'>
         <Tree health={tree?.health} height={40}/>

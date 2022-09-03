@@ -25,3 +25,15 @@ html{
 .box input {
   @apply border-solid border-2 border-gray-600;
 }
+
+.actionButtons {
+  @apply p-4 pt-0;
+}
+
+.actionButtons button svg {
+  @apply pr-2;
+}
+
+.actionButtons button {
+  @apply flex-grow p-2 bg-gray-500 rounded-lg;
+}

@@ -6,7 +6,7 @@ export interface UserProps {
 }
 
 export const Tree = ({ height, health }: UserProps) => {
-  const calcheight = health || 100;
+  const calcheight = (health) && (health / 100) * height || 0;
 
   return (
     <div>
@@ -134,7 +134,7 @@ export const Tree = ({ height, health }: UserProps) => {
         <div
           className="overflow-hidden absolute bottom-0 left-0 z-10 transition-[height] duration-1000 ease-in-out"
           style={{
-            height: (calcheight / 100) * height + "vh",
+            height: calcheight + "vh",
             width: height + "vh",
           }}
         >

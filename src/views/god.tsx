@@ -1,6 +1,9 @@
 import { useMutation, useQuery } from "../convex/_generated/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Tree from "../components/tree";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBug, faDroplet, faWater, faFire, faBolt } from '@fortawesome/free-solid-svg-icons'
 
 interface godProps {
   gameID: string;
@@ -33,10 +36,10 @@ function God({ gameID }: godProps) {
       singleTreeAdd(gameID, toRemove, -100);
       console.log("fully killed " + toRemove);
     }
-    let mult = deadTrees / (totalTrees - deadTrees) || 0
-    console.log(mult)
-    if(Math.min() * mult > 0.95){
-        forestfire()
+    let mult = deadTrees / (totalTrees - deadTrees) || 0;
+    console.log(mult);
+    if (Math.min() * mult > 0.95) {
+      forestfire();
     }
   };
 
@@ -60,22 +63,47 @@ function God({ gameID }: godProps) {
     removeAll(gameID, Math.round(3 + 10 * Math.random()));
   };
 
+  const trees = useQuery("listTrees", gameID);
+
   return (
-    <div className="w-screen h-screen flex justify-center items-center">
-      <div className="box">
+    <div className="w-screen h-screen flex flex-col">
+      <div className="box text-center p-3">
+        <h3 className="text-xl">Game ID:</h3>
+        <h1 className="text-4xl">{gameID}</h1>
+      </div>
+      <div className="flex-grow flex-col">
+        <div className="p-8 flex flex-wrap w-screen flex items-center justify-center">
+          {trees &&
+            Array.from(trees.keys()).map((s) => {
+              return (
+                <Tree key={s} health={trees?.get(s)?.health} height={20} />
+              );
+            })}
+        </div>
+      </div>
+      <div className="box bg-white">
         {/* status bar */}
-        <div>
-          <div>{deadTrees}</div>
-          <div>{totalTrees}</div>
-          <div>{averageHealth}</div>
+        <div className="w-screen flex">
+          <div className="flex-grow text-right m-4 p-2 bg-red-700 rounded-xl">
+            <h2 className="text-xl">Dead Trees</h2>
+            <h1 className="text-3xl">{deadTrees}</h1>
+          </div>
+          <div className="flex-grow text-right m-4 p-2 bg-green-700 rounded-xl">
+          <h2 className="text-xl">Total Trees</h2>
+            <h1 className="text-3xl">{totalTrees}</h1>
+          </div>
+          <div className="flex-grow text-right m-4 p-2 bg-yellow-500 rounded-xl">
+          <h2 className="text-xl">Average Health</h2>
+            <h1 className="text-3xl">{averageHealth}</h1>
+          </div>
         </div>
         {/* actions */}
-        <div className="flex space-x-3">
-          <button onClick={lightning}>Lightning</button>
-          <button onClick={forestfire}>Forest Fire</button>
-          <button onClick={flood}>Flood</button>
-          <button onClick={drought}>Drought</button>
-          <button onClick={bugs}>Bugs</button>
+        <div className="actionButtons flex w-screen space-x-4">
+          <button className="!bg-yellow-300 text-black" onClick={lightning}><FontAwesomeIcon icon={faBolt} />Lightning</button>
+          <button className="!bg-red-400" onClick={forestfire}><FontAwesomeIcon icon={faFire} />Forest Fire</button>
+          <button className="!bg-blue-700" onClick={flood}><FontAwesomeIcon icon={faWater} />Flood</button>
+          <button className="!bg-blue-300" onClick={drought}><FontAwesomeIcon icon={faDroplet} />Drought</button>
+          <button className="!bg-orange-800" onClick={bugs}><FontAwesomeIcon icon={faBug} />Bugs</button>
         </div>
       </div>
     </div>
