@@ -8,6 +8,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import Auth from './views/auth';
+import God from './views/god';
 import Setup from './views/setup';
 import Trees from './views/trees';
 
@@ -31,6 +32,7 @@ function App() {
         <Route path='/' element={<Auth setUser={setUser} setGameID={setGameID}/>}/>
         <Route path='/trees' element={<RequireUser><Trees gameCode={gameID} user={user} /></RequireUser>}/>
         <Route path='/setup' element={<Setup setGameID={setGameID}/>} />
+        <Route path='/god' element={<God/>}/>
       </Routes>
     </Router>
   );
