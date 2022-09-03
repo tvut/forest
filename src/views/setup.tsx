@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "../convex/_generated/react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface setupProps {
   setGameID: (user: string) => void;
@@ -37,6 +37,12 @@ function Setup({ setGameID }: setupProps) {
             </div>
           </div>
         </div>
+                <Link
+          className="mt-4 box p-2 px-3 !bg-blue-700"
+          to="/god"
+        >
+          God Mode
+        </Link>
       </div>
     </div>
   );
