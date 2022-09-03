@@ -45,7 +45,7 @@ function Trees({ user, gameCode }: TreeProps) {
       <div className='w-screen flex justify-center'>
         <Tree health={tree?.health} height={40}/>
       </div>
-      <div className='absolute bottom-2 right-2 flex space-x-3'>
+      <div style={{ display: tree?.health!<=0 ? "none" : "block" }} className='absolute bottom-2 right-2 flex space-x-3'>
         <button className='box !bg-sky-600 p-2 px-3' onClick={waterTree}>Water</button>
         <button className='!bg-yellow-800 p-2 px-3 box' onClick={fertilizeTree}>Fertilize</button>
       </div>
