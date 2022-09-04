@@ -23,26 +23,31 @@ function Setup({ setGameID }: setupProps) {
     <div className="w-screen h-screen flex justify-center items-center">
       <div>
         <div className="text-white text-4xl text-center mb-8">Forest</div>
-        <div className={"box p-8"}>
+        <div className={"w-64 box p-10 box-content"}>
           <div className="flex flex-col space-y-3">
             <h1>Generate a game code: </h1>
             { gameCode }
             <div className="flex justify-end">
-              <button
+              {!gameCode && 
+              <><button
                 className="box p-2 px-3 !bg-orange-700"
                 onClick={generateGameCode}
               >
                 Generate
               </button>
-            </div>
-          </div>
-        </div>
+              </>}
+              {gameCode &&
+              <>
                 <Link
           className="mt-4 box p-2 px-3 !bg-blue-700"
           to="/god"
         >
           God Mode
         </Link>
+              </>}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

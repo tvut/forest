@@ -61,7 +61,7 @@ function Auth({ userOnly, setUser, setGameID }: authProps) {
   return (
     <div className="w-screen h-screen flex justify-center items-center">
       <div>
-        <div className="text-white text-4xl text-center mb-8">Forest</div>
+        <div className="text-white text-4xl text-center mb-8 font-bold">Forest</div>
         <div className={"box p-8"}>
           <div className="flex flex-col space-y-3">
             {!userOnly && (
