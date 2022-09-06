@@ -1,6 +1,10 @@
 import { useMutation, useQuery } from "../convex/_generated/react";
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faGithub
+} from "@fortawesome/free-brands-svg-icons"
 
 interface authProps {
   setUser: (user: string) => void;
@@ -112,6 +116,10 @@ function Auth({ userOnly, setUser, setGameID }: authProps) {
             Setup Game
           </Link>
         </div>
+        <div className="mt-6 text-gray-400 hover:text-white text-3xl text-center transition-all">
+          <a href="https://github.com/tvut/forest"><FontAwesomeIcon icon={faGithub} /></a>
+          </div>
+          <div className="text-center text-gray-600 mt-2 text-sm">Made by Tristan and Ishan in 2022.</div>
       </div>
     </div>
   );
